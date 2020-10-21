@@ -13,6 +13,6 @@
 
     </metadata>
     <files>
-      <file src="hello.png" target="images\"/>
+      <file src="..\hello.png" target="images\"/>
     </files>
 </package>
