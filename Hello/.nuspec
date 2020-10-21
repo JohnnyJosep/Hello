@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+    
+        <id>Hello</id>
+        <version>1.0.0</version>
+        <authors>JohnnyJosep</authors>
+        <description>The famous Hello World</description>
+
+        <projectUrl>https://github.com/JohnnyJosep/Hello</projectUrl>
+        <license type="expression">MIT</license>
+        <icon>images\hello.png</icon>
+
+    </metadata>
+    <files>
+      <file src="hello.png" target="images\"/>
+    </files>
+</package>
