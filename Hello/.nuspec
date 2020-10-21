@@ -2,7 +2,7 @@
 <package >
     <metadata>
     
-        <id>Hello</id>
+        <id>JohnnyJosep.Hello</id>
         <version>1.0.0</version>
         <authors>JohnnyJosep</authors>
         <description>The famous Hello World</description>
