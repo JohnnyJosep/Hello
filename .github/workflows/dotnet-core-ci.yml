@@ -34,8 +34,10 @@ jobs:
     - name: Pack
       shell: powershell
       run: |
-        $gitversion = .\tools\gitversion\dotnet-gitversion.exe | ConvertFrom-Json
-        $version = "version=$($gitversion.MajorMinorPatch)"
+        $gitversion = .\tools\gitversion\dotnet-gitversion.exe
+        echo $gitversion
+        $json = $gitversion | ConvertFrom-Json
+        $version = "version=$($json.MajorMinorPatch)"
         dotnet pack .\Hello\Hello.csproj -p:NuspecFile=.nuspec -p:NuspecProperties=$version --configuration Release --output nuget-packages
     
     - name: Push
