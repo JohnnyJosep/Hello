@@ -12,36 +12,31 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
 
-    - name: Install dependencies
-      run: dotnet restore
+    #- name: Install dependencies
+    #  run: dotnet restore
 
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
+    #- name: Build
+    #  run: dotnet build --configuration Release --no-restore
 
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+    #- name: Test
+    #  run: dotnet test --no-restore --verbosity normal
       
     - name: Install GitVersion.Tool
-      shell: powershell
-      run: dotnet tool update GitVersion.Tool --version 5.3.7 --tool-path .\tools\gitversion 
-      
-    - name: Pack
-      shell: powershell
-      run: |
-        $gitversion = .\tools\gitversion\dotnet-gitversion.exe
-        echo $gitversion
-        $json = $gitversion | ConvertFrom-Json
-        $version = "version=$($json.MajorMinorPatch)"
-        dotnet pack .\Hello\Hello.csproj -p:NuspecFile=.nuspec -p:NuspecProperties=$version --configuration Release --output nuget-packages
-    
-    - name: Push
-      run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      id: gitversion
+      uses: GitTools/actions@v0.9.4
+      with:
+        versionSpec: 5.x
+        
+    - name: Test
+      run: echo ${{ steps.gitversion.outputs.majorMinorPatch }}
         
       
       
