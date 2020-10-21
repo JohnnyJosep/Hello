@@ -1,0 +1,26 @@
+mode: ContinuousDeployment
+
+branches:
+  # main branch configuration
+  master:
+    regex: ^main$|^master$
+  
+  # develop branch configuration
+  develop:
+    regex: ^develop$|^staging$
+    tag: develop
+  
+  # feature branches configuration
+  feature:
+    regex: ^feature[/-]
+    tag: useBranchName
+
+  # hotfix banches configurat
+  hotfix:
+    regex: ^hotfix[/-]
+    tag: hotfix
+
+  # release branches configuration
+  release: 
+    regex: ^release[/-]
+    tag: release
